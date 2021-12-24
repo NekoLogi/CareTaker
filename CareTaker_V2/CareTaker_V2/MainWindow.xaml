@@ -1,0 +1,97 @@
+﻿<Window x:Class="CareTaker_V2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CareTaker_V2"
+        mc:Ignorable="d"
+        Title="CareTaker Ver.2.0" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="DarkGray"
+        Initialized="Window_Initialized"
+        ShowInTaskbar="True" MinWidth="800" MinHeight="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <GroupBox Header="Suche">
+                <StackPanel>
+                    <Label>Name:</Label>
+                    <TextBox x:Name="NameTextBox" Height="25"
+                         VerticalContentAlignment="Center" TextChanged="NameTextBox_TextChanged"></TextBox>
+                    <Label>Kategorie:</Label>
+                    <ComboBox x:Name="CategoryComboBox" Height="25" DropDownClosed="CategoryComboBox_DropDownClosed">
+                        <ComboBoxItem IsSelected="True">Alles</ComboBoxItem>
+                        <ComboBoxItem>Elektronik</ComboBoxItem>
+                        <ComboBoxItem>Haushalt</ComboBoxItem>
+                        <ComboBoxItem>Medien</ComboBoxItem>
+                        <ComboBoxItem>Büro / Dokumente</ComboBoxItem>
+                    </ComboBox>
+                    <Separator Margin="0 15 0 4" Background="White" VerticalAlignment="Center" />
+                    <Label>Lagernummer [Platz]:</Label>
+                    <TextBox x:Name="PlaceTextBox" Height="25"
+                         VerticalContentAlignment="Center" TextChanged="PlaceTextBox_TextChanged"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="4">
+                <Button x:Name="CreateButton" Height="30" Click="CreateButton_Click">Erstellen</Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <GroupBox Header="Produkte">
+                <DataGrid x:Name="ItemList"
+                          GridLinesVisibility="Horizontal"
+                          HorizontalGridLinesBrush="Gray"
+                          VerticalGridLinesBrush="Gray"
+                          SelectionMode="Single"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserResizeRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name" Width="300" Binding="{Binding NAME}"/>
+                        <DataGridTextColumn Header="Kategorie"  Width="300" Binding="{Binding CATEGORY}"/>
+                        <DataGridTextColumn Header="Platz"  Width="160" Binding="{Binding PLACE}"/>
+                    </DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="EditContextMenu" Header="Bearbeiten" Click="EditContextMenu_Click"/>
+                            <Separator/>
+                            <MenuItem x:Name="DeleteContextMenu" Header="Löschen" Click="DeleteContextMenu_Click">
+                                Ja
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</Window>

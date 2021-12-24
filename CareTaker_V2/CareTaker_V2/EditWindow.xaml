@@ -1,0 +1,37 @@
+﻿<Window x:Class="CareTaker_V2.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CareTaker_V2"
+        mc:Ignorable="d"
+        Title="Bearbeiten" Height="300" Width="800"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterScreen"
+        Background="DarkGray"
+        Topmost="True" Initialized="Window_Initialized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1">
+            <Label>Name:</Label>
+            <TextBox x:Name="NameTextBox" Height="25" VerticalContentAlignment="Center"></TextBox>
+            <Label>Kategorie:</Label>
+            <ComboBox x:Name="CategoryComboBox" Height="25">
+                <ComboBoxItem>Elektronik</ComboBoxItem>
+                <ComboBoxItem>Haushalt</ComboBoxItem>
+                <ComboBoxItem>Medien</ComboBoxItem>
+                <ComboBoxItem>Büro / Dokumente</ComboBoxItem>
+            </ComboBox>
+            <Label>Tags: (Trenne Tags mit einem Leerzeichen)</Label>
+            <TextBox x:Name="TagsTextBox" Height="25" VerticalContentAlignment="Center"></TextBox>
+            <Label>Lagerplatz: (Trenne Lagernummern mit einem Leerzeichen)</Label>
+            <TextBox x:Name="PlaceTextBox" Height="25" VerticalContentAlignment="Center"></TextBox>
+            <Button x:Name="EditItemButton" Height="30" Margin="20" Click="EditItemButton_Click">Bearbeiten</Button>
+        </StackPanel>
+    </Grid>
+</Window>
